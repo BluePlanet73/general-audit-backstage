@@ -44,10 +44,12 @@ function SidebarComponent() {
                            onClick={() => proxyMode.push('/rewardSetting')}>
                     奖励设置
                 </Menu.Item>
-                <Menu.Item key="examSetting" icon={<ReconciliationOutlined/>}
-                           onClick={() => proxyMode.push('/examSetting')}>
-                    考试设置
-                </Menu.Item>
+                <SubMenu key="exam" icon={<ReconciliationOutlined/>} title="考试管理">
+                    <Menu.Item key="examSetting"
+                               onClick={() => proxyMode.push('/examSetting')}>考试设置</Menu.Item>
+                    <Menu.Item key="examAdd"
+                               onClick={() => proxyMode.push('/examAdd')}>考试添加</Menu.Item>
+                </SubMenu>
             </Menu>
         </Sider>
     )

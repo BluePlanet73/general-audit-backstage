@@ -27,6 +27,18 @@ function BreadcrumbComponent() {
         "examSetting": {
             text: "考试设置"
         },
+        "auditUser": {
+            text: "审核用户"
+        },
+        "orderDetails": {
+            text: "做单信息"
+        },
+        "picture": {
+            text: "执行图详情"
+        },
+        "examAdd": {
+            text: "考试添加"
+        },
     }
     return (
         <Breadcrumb style={{margin: '16px 0'}}>

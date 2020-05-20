@@ -3,6 +3,7 @@ import {Input, Button, message} from 'antd';
 import RenderSelect from "../component/RenderSelect";
 import RenderTable from "../component/RenderTable";
 import TableFooter from "../component/TableFooter";
+import ProxyMode from "../utils/Route";
 
 class UserManagementPage extends React.Component {
     constructor(props) {
@@ -24,6 +25,15 @@ class UserManagementPage extends React.Component {
                 {
                     title: '用户账号',
                     dataIndex: 'name',
+                    render: (_, record) => {
+                        const proxyMode = ProxyMode();
+                        return (
+                            <Button onClick={() => {
+                                proxyMode.push('/orderDetails')
+                            }
+                            }>{_}</Button>
+                        )
+                    }
                 },
                 {
                     title: '支付宝账号',

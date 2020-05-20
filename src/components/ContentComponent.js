@@ -10,6 +10,10 @@ import RewardSettingPage from "../view/RewardSettingPage";
 import ExamSettingPage from "../view/ExamSettingPage";
 import LoginPage from "../view/LoginPage";
 import BreadcrumbComponent from "./BreadcrumbComponent";
+import AuditUserPage from "../view/AuditUserPage";
+import OrderDetailsPage from "../view/OrderDetailsPage";
+import Picture from "../view/Picture";
+import ExamAdd from "../view/ExamAdd";
 
 function ContentComponent() {
     const {Content} = Layout;
@@ -21,8 +25,14 @@ function ContentComponent() {
                     <Route exact path="/withdrawAudit">
                         <WithdrawAuditPage/>
                     </Route>
+                    <Route exact path="/auditUser">
+                        <AuditUserPage/>
+                    </Route>
                     <Route exact path="/userManagement">
                         <UserManagementPage/>
+                    </Route>
+                    <Route exact path="/orderDetails">
+                        <OrderDetailsPage/>
                     </Route>
                     <Route exact path="/landmineSetting">
                         <LandmineSettingPage/>
@@ -33,11 +43,17 @@ function ContentComponent() {
                     <Route exact path="/pictureDetails">
                         <PictureDetailsPage/>
                     </Route>
+                    <Route exact path="/picture">
+                        <Picture/>
+                    </Route>
                     <Route exact path="/rewardSetting">
                         <RewardSettingPage/>
                     </Route>
                     <Route exact path="/examSetting">
                         <ExamSettingPage/>
+                    </Route>
+                    <Route exact path="/examAdd">
+                        <ExamAdd/>
                     </Route>
                     <Route exact path="/login">
                         <LoginPage/>

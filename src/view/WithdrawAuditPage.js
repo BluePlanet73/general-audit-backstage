@@ -3,6 +3,7 @@ import {Input, Button, message} from 'antd';
 import RenderSelect from "../component/RenderSelect";
 import RenderTable from "../component/RenderTable";
 import TableFooter from "../component/TableFooter";
+import ProxyMode from "../utils/Route";
 
 class WithdrawAuditPage extends React.Component {
     constructor(props) {
@@ -18,7 +19,12 @@ class WithdrawAuditPage extends React.Component {
             total: 0,
             loading: false,
             selectedRowKeys: [],
-            data: [],
+            data: [
+                {
+                    id: 1,
+                    name: 2
+                }
+            ],
             columns: [
                 {
                     title: '用户账号',
@@ -51,13 +57,15 @@ class WithdrawAuditPage extends React.Component {
                 {
                     title: '操作',
                     dataIndex: 'name',
-                    render: (_, record) => (
-                        <Button onClick={() => {
-                            message.info('操作');
-                            console.log(record);
-                        }
-                        }>审核</Button>
-                    )
+                    render: (_, record) => {
+                        const proxyMode = ProxyMode();
+                        return (
+                            <Button onClick={() => {
+                                proxyMode.push('/auditUser')
+                            }
+                            }>审核</Button>
+                        )
+                    }
                 }
             ]
         }

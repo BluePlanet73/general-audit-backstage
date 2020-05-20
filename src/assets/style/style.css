@@ -1,6 +1,35 @@
 /*General Style*/
+.flex-center-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.flex-center-start {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/*RenderPictureList*/
+.view {
+    box-sizing: border-box;
+    width: 20%;
+    padding: 0 5px;
+    margin: 10px 0;
+}
+
+/**/
 .flex {
     display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
 }
 
 .flex-center {
@@ -36,3 +65,4 @@
 }
 
 /*WithdrawAuditPage*/
+
