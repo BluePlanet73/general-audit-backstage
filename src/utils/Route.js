@@ -5,12 +5,12 @@ class Route {
         this.history = useHistory();
     }
 
-    push(pathName) {
-        this.history.push(pathName);
+    push(pathname, state) {
+        this.history.push({pathname, state});
     }
 
-    replace(pathName) {
-        this.history.replace(pathName);
+    replace(pathname) {
+        this.history.replace(pathname);
     }
 }
 

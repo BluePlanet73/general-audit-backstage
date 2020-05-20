@@ -1,8 +1,42 @@
 /*General Style*/
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .flex-center-end {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
 }
 
 .flex-center-start {
@@ -20,49 +54,24 @@
     margin: 10px 0;
 }
 
-/**/
-.flex {
-    display: flex;
+/*LoginPage*/
+.login-input, .login-form-button {
+    width: 300px;
 }
 
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-content: center;
+.login-form {
+    height: 100%;
+    width: 100%;
 }
 
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#components-form-demo-normal-login .login-form {
+    max-width: 300px;
 }
 
-.flex-space-around {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+#components-form-demo-normal-login .login-form-forgot {
+    float: right;
 }
 
-.flex-space-between {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#components-form-demo-normal-login .ant-col-rtl .login-form-forgot {
+    float: left;
 }
-
-/*SidebarComponent Style*/
-.logo {
-    height: 70px;
-}
-
-.logo div {
-    height: 35px;
-    width: 80%;
-    line-height: 35px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #fff;
-}
-
-/*WithdrawAuditPage*/
-
