@@ -14,14 +14,14 @@ import Loading from "../view/Loading";
 
 export default function Router() {
     const proxyMode = ProxyMode();
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         !localStorage.getItem("loggedIn") && proxyMode.replace('/login');
-    //     }, 1000);
-    //     return () => {
-    //         clearInterval(interval);
-    //     }
-    // });
+    useEffect(() => {
+        const interval = setInterval(() => {
+            !localStorage.getItem("loggedIn") && proxyMode.replace('/login');
+        }, 1000);
+        return () => {
+            clearInterval(interval);
+        }
+    });
     return (
         <BrowserRouter>
             <Switch>
