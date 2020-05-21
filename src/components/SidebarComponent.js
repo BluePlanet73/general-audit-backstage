@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Layout, Menu} from "antd";
-import ProxyMode from "../utils/Route";
+import ProxyMode from "../utils/route";
 import {
     ReconciliationOutlined,
     CarOutlined,
@@ -18,37 +18,33 @@ function SidebarComponent() {
 
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={() => setCollapsed(!collapsed)}>
-            <div className="logo flex-center">
-                <div/>
-            </div>
             <Menu theme="dark" defaultSelectedKeys={['withdrawAudit']} mode="inline">
                 <Menu.Item key="withdrawAudit" icon={<GroupOutlined/>}
-                           onClick={() => proxyMode.push('/withdrawAudit')}>
+                           onClick={() => proxyMode.history.push('/home/withdrawAudit')}>
                     提现审核
                 </Menu.Item>
                 <Menu.Item key="userManagement" icon={<FundProjectionScreenOutlined/>}
-                           onClick={() => proxyMode.push('/userManagement')}>
+                           onClick={() => proxyMode.history.push('/home/userManagement')}>
                     用户管理
                 </Menu.Item>
                 <SubMenu key="landmine" icon={<LayoutOutlined/>} title="地雷设置">
                     <Menu.Item key="landmineSetting"
-                               onClick={() => proxyMode.push('/landmineSetting')}>地雷设置</Menu.Item>
+                               onClick={() => proxyMode.history.push('/home/landmineSetting')}>地雷设置</Menu.Item>
                     <Menu.Item key="landmineNickname"
-                               onClick={() => proxyMode.push('/landmineNickname')}>地雷昵称</Menu.Item>
+                               onClick={() => proxyMode.history.push('/home/landmineNickname')}>地雷昵称</Menu.Item>
                 </SubMenu>
                 <Menu.Item key="pictureDetails" icon={<InsertRowBelowOutlined/>}
-                           onClick={() => proxyMode.push('/pictureDetails')}>
+                           onClick={() => proxyMode.history.push('/home/pictureDetails')}>
                     执行图信息
                 </Menu.Item>
                 <Menu.Item key="rewardSetting" icon={<CarOutlined/>}
-                           onClick={() => proxyMode.push('/rewardSetting')}>
+                           onClick={() => proxyMode.history.push('/home/rewardSetting')}>
                     奖励设置
                 </Menu.Item>
                 <SubMenu key="exam" icon={<ReconciliationOutlined/>} title="考试管理">
                     <Menu.Item key="examSetting"
-                               onClick={() => proxyMode.push('/examSetting')}>考试设置</Menu.Item>
-                    <Menu.Item key="examAdd"
-                               onClick={() => proxyMode.push('/examAdd')}>考试添加</Menu.Item>
+                               onClick={() => proxyMode.history.push('/home/examSetting')}>考试设置</Menu.Item>
+                    <Menu.Item key="examAdd" onClick={() => proxyMode.history.push('/home/examAdd')}>考试添加</Menu.Item>
                 </SubMenu>
             </Menu>
         </Sider>

@@ -8,61 +8,57 @@ import LandmineNicknamePage from "../view/LandmineNicknamePage";
 import PictureDetailsPage from "../view/PictureDetailsPage";
 import RewardSettingPage from "../view/RewardSettingPage";
 import ExamSettingPage from "../view/ExamSettingPage";
-import LoginPage from "../view/LoginPage";
 import BreadcrumbComponent from "./BreadcrumbComponent";
 import AuditUserPage from "../view/AuditUserPage";
 import OrderDetailsPage from "../view/OrderDetailsPage";
 import Picture from "../view/Picture";
 import ExamAdd from "../view/ExamAdd";
 
-function ContentComponent() {
+export default function ContentComponent() {
     const {Content} = Layout;
     return (
         <Content style={{margin: '0 16px'}}>
             <BreadcrumbComponent/>
             <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                 <Switch>
-                    <Route exact path="/withdrawAudit">
+                    <Route exact path="/home/withdrawAudit">
                         <WithdrawAuditPage/>
                     </Route>
-                    <Route exact path="/auditUser">
-                        <AuditUserPage/>
-                    </Route>
-                    <Route exact path="/userManagement">
+                    <Route exact path="/home/userManagement">
                         <UserManagementPage/>
                     </Route>
-                    <Route exact path="/orderDetails">
-                        <OrderDetailsPage/>
-                    </Route>
-                    <Route exact path="/landmineSetting">
+                    <Route exact path="/home/landmineSetting">
                         <LandmineSettingPage/>
                     </Route>
-                    <Route exact path="/landmineNickName">
+                    <Route exact path="/home/landmineNickName">
                         <LandmineNicknamePage/>
                     </Route>
-                    <Route exact path="/pictureDetails">
+                    <Route exact path="/home/pictureDetails">
                         <PictureDetailsPage/>
                     </Route>
-                    <Route exact path="/picture">
-                        <Picture/>
-                    </Route>
-                    <Route exact path="/rewardSetting">
+                    <Route exact path="/home/rewardSetting">
                         <RewardSettingPage/>
                     </Route>
-                    <Route exact path="/examSetting">
+                    <Route exact path="/home/examSetting">
                         <ExamSettingPage/>
                     </Route>
-                    <Route exact path="/examAdd">
+                    <Route exact path="/home/examAdd">
                         <ExamAdd/>
                     </Route>
-                    <Route exact path="/login">
-                        <LoginPage/>
+                    <Route exact path="/home/withdrawAudit/:id">
+                        <AuditUserPage/>
                     </Route>
-                    <Redirect to="/withdrawAudit"/>
+                    <Route exact path="/home/userManagement/:id">
+                        <OrderDetailsPage/>
+                    </Route>
+                    <Route exact path="/home/pictureDetails/:id">
+                        <Picture/>
+                    </Route>
+                    <Route>
+                        <Redirect to="/home/withdrawAudit"/>
+                    </Route>
                 </Switch>
             </div>
         </Content>
     )
 }
-
-export default ContentComponent;

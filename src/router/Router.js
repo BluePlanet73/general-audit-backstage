@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Layout} from "antd";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import "../assets/style/style.css";
 import SidebarComponent from "../components/SidebarComponent";
@@ -40,6 +40,9 @@ export default function Router() {
                             <FooterComponent/>
                         </Layout>
                     </Layout>
+                </Route>
+                <Route>
+                    <Redirect to="/login"/>
                 </Route>
             </Switch>
         </BrowserRouter>

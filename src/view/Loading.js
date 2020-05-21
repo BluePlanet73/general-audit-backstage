@@ -6,18 +6,22 @@ export default function Loading(props) {
     const proxyMode = ProxyMode();
     useEffect(() => {
         const {code} = props;
-        login(code)
-            .then(response => {
-                const {error, data} = response;
-                error && proxyMode.history.replace('/login');
-                const {access_token, token_type} = data;
-                localStorage.setItem("loggedIn", `${token_type} ${access_token}`);
-                proxyMode.history.replace('/home');
-            })
-            .catch(e => {
-                console.log(e);
-                proxyMode.history.replace('/login');
-            })
+        if (localStorage.getItem("loggedIn")) {
+            proxyMode.history.replace('/home');
+        } else {
+            login(code)
+                .then(response => {
+                    const {error, data} = response;
+                    error && proxyMode.history.replace('/login');
+                    const {access_token, token_type} = data;
+                    localStorage.setItem("loggedIn", `${token_type} ${access_token}`);
+                    proxyMode.history.replace('/home');
+                })
+                .catch(e => {
+                    console.log(e);
+                    proxyMode.history.replace('/login');
+                })
+        }
     })
     return <div/>;
 }
