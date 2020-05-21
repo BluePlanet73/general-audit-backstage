@@ -8,15 +8,15 @@ import HeaderComponent from "../components/HeaderComponent";
 import ContentComponent from "../components/ContentComponent";
 import FooterComponent from "../components/FooterComponent";
 import LoginPage from "../view/LoginPage";
-import ProxyMode from "../utils/Route";
+import {route} from "../utils/route";
 import {getRequestParameter} from "../utils/util";
 import Loading from "../view/Loading";
 
 export default function Router() {
-    const proxyMode = ProxyMode();
+    const proxyMode = new route();
     useEffect(() => {
         const interval = setInterval(() => {
-            !localStorage.getItem("loggedIn") && proxyMode.replace('/login');
+            !localStorage.getItem("loggedIn") && proxyMode.history.replace('/login');
         }, 1000);
         return () => {
             clearInterval(interval);

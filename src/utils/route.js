@@ -1,6 +1,6 @@
 import {useHistory} from 'react-router-dom';
 
-export class Route {
+export class route {
     constructor() {
         this.history = useHistory();
     }
@@ -17,7 +17,7 @@ export class Route {
 const ProxyMode = (() => {
     let instance = null;
     return () => {
-        !instance && (instance = new Route());
+        !instance && (instance = new route());
         return instance;
     }
 })();

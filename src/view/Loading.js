@@ -1,22 +1,22 @@
 import React, {useEffect} from "react";
 import {login} from "../utils/api";
-import {Route} from "../utils/Route";
+import ProxyMode from "../utils/route";
 
 export default function Loading(props) {
-    const proxyMode = new Route().history;
+    const proxyMode = ProxyMode();
     useEffect(() => {
         const {code} = props;
         login(code)
             .then(response => {
                 const {error, data} = response;
-                error && proxyMode.replace('/login');
+                error && proxyMode.history.replace('/login');
                 const {access_token, token_type} = data;
                 localStorage.setItem("loggedIn", `${token_type} ${access_token}`);
-                proxyMode.replace('/home');
+                proxyMode.history.replace('/home');
             })
             .catch(e => {
                 console.log(e);
-                proxyMode.replace('/login');
+                proxyMode.history.replace('/login');
             })
     })
     return <div/>;
