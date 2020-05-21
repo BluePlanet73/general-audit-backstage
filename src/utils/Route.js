@@ -1,6 +1,6 @@
 import {useHistory} from 'react-router-dom';
 
-class Route {
+export class Route {
     constructor() {
         this.history = useHistory();
     }

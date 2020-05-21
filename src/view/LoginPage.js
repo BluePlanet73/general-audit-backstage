@@ -1,46 +1,8 @@
-import React from "react";
-import {Form, Input, Button} from 'antd';
-import {UserOutlined, LockOutlined} from '@ant-design/icons';
-import ProxyMode from "../utils/Route";
+import React, {useEffect} from "react";
 
 export default function LoginPage() {
-    const proxyMode = ProxyMode();
-    return (
-        <Form
-            name="normal_login"
-            className="login-form flex-column-center"
-            initialValues={{remember: true}}
-            onFinish={(values) => {
-                console.log(values.username);
-                console.log(values.password);
-                localStorage.setItem("loggedIn", "loggedIn");
-                proxyMode.replace('/home');
-            }}
-        >
-            <Form.Item
-                name="username"
-                rules={[{required: true, message: 'Please input your Username!'}]}
-            >
-                <Input className="login-input" prefix={<UserOutlined className="site-form-item-icon"/>}
-                       placeholder="Username"/>
-            </Form.Item>
-            <Form.Item
-                name="password"
-                rules={[{required: true, message: 'Please input your Password!'}]}
-            >
-                <Input
-                    className="login-input"
-                    prefix={<LockOutlined className="site-form-item-icon"/>}
-                    type="password"
-                    placeholder="Password"
-                />
-            </Form.Item>
-
-            <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">
-                    Log in
-                </Button>
-            </Form.Item>
-        </Form>
-    )
+    useEffect(() => {
+        window.location.href = "https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=ww06965c1768646c7f&agentid=1000017&redirect_uri=http://127.0.0.1:3000&state=STATE";
+    });
+    return <div/>
 }

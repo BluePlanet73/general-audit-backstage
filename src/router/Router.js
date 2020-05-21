@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Layout} from "antd";
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import 'antd/dist/antd.css';
 import "../assets/style/style.css";
 import SidebarComponent from "../components/SidebarComponent";
@@ -9,20 +9,25 @@ import ContentComponent from "../components/ContentComponent";
 import FooterComponent from "../components/FooterComponent";
 import LoginPage from "../view/LoginPage";
 import ProxyMode from "../utils/Route";
+import {getRequestParameter} from "../utils/util";
+import Loading from "../view/Loading";
 
 export default function Router() {
-    useEffect(() => {
-        const proxyMode = ProxyMode();
-        const interval = setInterval(() => {
-            !localStorage.getItem("loggedIn") && proxyMode.replace('/login');
-        }, 1000);
-        return () => {
-            clearInterval(interval);
-        }
-    });
+    const proxyMode = ProxyMode();
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         !localStorage.getItem("loggedIn") && proxyMode.replace('/login');
+    //     }, 1000);
+    //     return () => {
+    //         clearInterval(interval);
+    //     }
+    // });
     return (
         <BrowserRouter>
             <Switch>
+                <Route exact path="/">
+                    <Loading code={getRequestParameter("code")}/>
+                </Route>
                 <Route exact path="/login">
                     <LoginPage/>
                 </Route>
@@ -35,9 +40,6 @@ export default function Router() {
                             <FooterComponent/>
                         </Layout>
                     </Layout>
-                </Route>
-                <Route exact path="/">
-                    {localStorage.getItem("loggedIn") ? <Redirect to="/home"/> : <Redirect to="/login"/>}
                 </Route>
             </Switch>
         </BrowserRouter>
