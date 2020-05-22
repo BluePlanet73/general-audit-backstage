@@ -14,7 +14,7 @@ export default function Loading(props) {
                     const {error, data} = response;
                     error && proxyMode.history.replace('/login');
                     const {access_token, token_type} = data;
-                    localStorage.setItem("loggedIn", `${token_type} ${access_token}`);
+                    localStorage.setItem("loggedIn", `${token_type.charAt(0).toUpperCase()}${token_type.slice(1)} ${access_token}`);
                     proxyMode.history.replace('/home');
                 })
                 .catch(e => {

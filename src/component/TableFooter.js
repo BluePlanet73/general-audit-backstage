@@ -9,7 +9,7 @@ function TableFooter(props) {
             <RenderSelect list={operatingList} placeholder="批量操作" value={operating} name="operating"
                           onChange={handleSelect}/>
             <Button type="primary" onClick={operatingClick}
-                    style={{marginLeft: 15, marginRight: 25}}>提交操作</Button>
+                    style={{marginLeft: 10, marginRight: 25}}>提交操作</Button>
             <div>每页展示:</div>
             <Button style={{marginLeft: 15, marginRight: 5}}>50条</Button>
             <Button style={{marginLeft: 5, marginRight: 15}}>200条</Button>

@@ -3,7 +3,7 @@ import {Input, Button, message, DatePicker} from 'antd';
 import RenderSelect from "../component/RenderSelect";
 import RenderTable from "../component/RenderTable";
 import TableFooter from "../component/TableFooter";
-import ProxyMode from "../utils/Route";
+import ProxyMode from "../utils/route";
 
 class PictureDetailsPage extends React.Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class PictureDetailsPage extends React.Component {
                         const proxyMode = ProxyMode();
                         return (
                             <Button onClick={() => {
-                                proxyMode.push('/picture')
+                                proxyMode.push('/pictureDetails/1')
                             }
                             }>{_}</Button>
                         )
@@ -110,7 +110,7 @@ class PictureDetailsPage extends React.Component {
         const {loading, selectedRowKeys, audit, auditList, admin, cardId, columns, data, taskUrl, pictureStatus, pictureStatusList, taskCategory, taskCategoryList, operatingList, operating, total} = this.state;
         return (
             <div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <Input placeholder="任务链接" name="taskUrl" style={{width: 250}}
                            value={taskUrl}
                            onChange={this.handleInput}/>
@@ -124,7 +124,7 @@ class PictureDetailsPage extends React.Component {
                         <Button onClick={this.reset}>重制</Button>
                     </div>
                 </div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <Input placeholder="卡盟ID" name="cardId" style={{width: 250}}
                            value={cardId}
                            onChange={this.handleInput}/>
@@ -135,7 +135,7 @@ class PictureDetailsPage extends React.Component {
                                   name="audit"
                                   onChange={this.handleSelect}/>
                 </div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <RangePicker showTime onChange={this.timeChange}/>
                 </div>
                 <TableFooter handleSelect={this.handleSelect} operatingList={operatingList}

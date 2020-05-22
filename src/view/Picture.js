@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Pagination, message} from 'antd';
 import RenderPictureList from "../component/RenderPictureList";
+import ProxyMode from "../utils/route";
 
 class Picture extends React.Component {
     constructor(props) {
@@ -65,7 +66,7 @@ class Picture extends React.Component {
         const {selectedRowKeys, data, total} = this.state;
         return (
             <div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <div>任务链接: {123564646}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {total} 条数据</div>
                 </div>
                 <RenderPictureList data={data}

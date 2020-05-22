@@ -93,7 +93,7 @@ class ExamAdd extends React.Component {
         const {selectedRowKeys, data, total} = this.state;
         return (
             <div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <Input type="file" name="file" onChange={this.handleUpload} style={{width: 200}}/>
                     <Button type="primary" onClick={this.importFile}>导入</Button>
                     <Button type="primary" onClick={this.save}>保存</Button>

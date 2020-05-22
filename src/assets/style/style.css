@@ -46,6 +46,14 @@ html, body, #root {
     justify-content: flex-start;
 }
 
+.margin-right-twenty-five {
+    margin-right: 25px;
+}
+
+.margin-right-fifteen {
+    margin-right: 15px;
+}
+
 /*RenderPictureList*/
 .view {
     box-sizing: border-box;

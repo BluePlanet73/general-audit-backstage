@@ -98,7 +98,7 @@ class LandmineNicknamePage extends React.Component {
         const {loading, selectedRowKeys, columns, data, operatingList, operating, total} = this.state;
         return (
             <div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <Input type="file" name="file" onChange={this.handleUpload} style={{width: 200}}/>
                     <Button type="primary" onClick={this.importFile}>导入</Button>
                 </div>

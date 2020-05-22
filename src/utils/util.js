@@ -5,13 +5,19 @@ export const transformFetch = async (method, url, data) => {
     const TIME_STAMP = Math.round(Date.now() / 1000).toString();
     const POST_DATA = JSON.stringify(data);
     const HEADER = new Headers({
+        'authorization': localStorage.getItem("loggedIn"),
         'x-uaid': "10009", 'x-timestamp': TIME_STAMP,
         'x-signature': CryptoJS.HmacSHA256((method === 'GET' ? buildStr(data) : POST_DATA) + '.' + TIME_STAMP, PRIVATE_KEY).toString(),
     });
     let request = {method, headers: HEADER};
     method !== 'GET' && (request['body'] = POST_DATA);
     const FETCH_DATA = await fetch(parameterTransform(method, url, data), request);
-    return DEVELOPER === "Production" ? JSON.parse(AesDecrypt(await FETCH_DATA.text())) : JSON.parse(await FETCH_DATA.text());
+    const DATA_TEXT = await FETCH_DATA.text();
+    try {
+        return DEVELOPER === "Production" ? JSON.parse(AesDecrypt(DATA_TEXT)) : JSON.parse(DATA_TEXT);
+    } catch (e) {
+        return {error: 999, msg: "请求失败"}
+    }
 };
 
 /**
@@ -23,7 +29,6 @@ export const transformFetch = async (method, url, data) => {
  * @author JinPing Tan 2020/3/30
  */
 const parameterTransform = (method, key, parameter) => {
-    if (Object.keys(parameter).length === 0 || key.length === 0) return '';
     if (method !== "GET") return URL + key;
     let parameterString = URL + key + "?";
     for (let param in parameter) {

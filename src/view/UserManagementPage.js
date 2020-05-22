@@ -3,13 +3,15 @@ import {Input, Button, message} from 'antd';
 import RenderSelect from "../component/RenderSelect";
 import RenderTable from "../component/RenderTable";
 import TableFooter from "../component/TableFooter";
-import ProxyMode from "../utils/Route";
+import ProxyMode from "../utils/route";
+import {enums, readAll} from "../utils/api";
 
 class UserManagementPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             userNumber: "",//用户账号
+            UserStatusApiText: {},//用户状态码表中文
             userStatus: undefined,//用户状态
             userStatusList: [],
             operating: undefined,//批量操作
@@ -17,10 +19,7 @@ class UserManagementPage extends React.Component {
             total: 0,
             loading: false,
             selectedRowKeys: [],
-            data: [{
-                id: 1,
-                name: 1
-            }],
+            data: [],
             columns: [
                 {
                     title: '用户账号',
@@ -29,7 +28,7 @@ class UserManagementPage extends React.Component {
                         const proxyMode = ProxyMode();
                         return (
                             <Button onClick={() => {
-                                proxyMode.push('/orderDetails')
+                                proxyMode.push('/userManagement/1', {a: 1111})
                             }
                             }>{_}</Button>
                         )
@@ -92,7 +91,81 @@ class UserManagementPage extends React.Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.operating = this.operating.bind(this);
+        this.readList = this.readList.bind(this);
         this.onSelectChange = this.onSelectChange.bind(this);
+    }
+
+    componentDidMount() {
+        this.enumsList();
+    }
+
+    formatEnumsText(array) {
+        if (!array || !array.length) {
+            return {}
+        }
+        let obj = {};
+        array.forEach(item => {
+            try {
+                obj[item[0]] = item[1];
+            } catch (e) {
+                console.log(e);
+            }
+        });
+        return obj;
+    }
+
+    formatEnums(array) {
+        if (!array || !array.length) {
+            return {}
+        }
+        let newArray = [];
+        array.forEach(item => {
+            try {
+                newArray.push({
+                    id: item[0],
+                    label: item[1]
+                })
+            } catch (e) {
+                console.log(e);
+            }
+        });
+        return newArray;
+    }
+
+    readList() {
+        const {userStatus, userNumber} = this.state;
+        let filter = undefined;
+        let array = ["AND", []];
+        userStatus && array[1].push(["EQ", ["user", "status"], userStatus]);
+        userNumber && array[1].push(["EQ", ["user", "phone"], userNumber]);
+        array[1].length && (filter = array);
+        readAll("User", [["app", ["phone", "status"]], "user_id", "app", "phone", "avatar", "password", "nickname", "balance", "passed", "status", "remarks"], 1, 20, filter,)
+            .then(response => {
+                let {error, data, total} = response;
+                data = this.format(data);
+                if (error) {
+
+                } else {
+                    this.setState({total, data});
+                }
+            })
+    }
+
+    enumsList() {
+        enums()
+            .then(response => {
+                const {error, data} = response;
+                if (error) {
+
+                } else {
+                    const {UserStatus} = data;
+                    this.setState({
+                        UserStatusApiText: this.formatEnumsText(UserStatus),
+                        userStatusList: this.formatEnums(UserStatus),
+                    })
+                    this.readList();
+                }
+            })
     }
 
     handleSelect(who, value) {
@@ -127,7 +200,7 @@ class UserManagementPage extends React.Component {
         const {loading, selectedRowKeys, columns, data, userNumber, userStatus, userStatusList, operatingList, operating, total} = this.state;
         return (
             <div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <Input placeholder="用户账号" name="userNumber" style={{width: 250}}
                            value={userNumber}
                            onChange={this.handleInput}/>

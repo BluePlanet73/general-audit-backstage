@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Pagination, message} from 'antd';
 import RenderPictureList from "../component/RenderPictureList";
+import ProxyMode from "../utils/route";
 
 class OrderDetailsPage extends React.Component {
     constructor(props) {
@@ -45,6 +46,12 @@ class OrderDetailsPage extends React.Component {
         this.onSelectChange = this.onSelectChange.bind(this);
     }
 
+    componentDidMount() {
+        console.log(this.props)
+        const proxyMode = ProxyMode();
+        console.log(proxyMode);
+    }
+
     handleSelect(who, value) {
         this.setState({
             [who]: value,
@@ -69,7 +76,7 @@ class OrderDetailsPage extends React.Component {
         const {selectedRowKeys, data, total} = this.state;
         return (
             <div>
-                <div style={{marginBottom: 16}} className="flex-space-between">
+                <div style={{marginBottom: 16}} className="flex-center-between">
                     <div>用户账号: {123564646}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {total} 条数据</div>
                     <div>
                         <Button type="primary" onClick={this.audit} style={{marginRight: 10}}>审核通过</Button>
