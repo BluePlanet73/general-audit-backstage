@@ -174,22 +174,22 @@ class WithdrawAuditPage extends React.Component {
     }
 
     enumsList() {
-        enums()
-            .then(response => {
-                const {error, data} = response;
-                if (error) {
-
-                } else {
-                    const {UserStatus, WithdrawStatus} = data;
-                    this.setState({
-                        UserStatusApiText: this.formatEnumsText(UserStatus),
-                        WithdrawStatusApiText: this.formatEnumsText(WithdrawStatus),
-                        userStatusList: this.formatEnums(UserStatus),
-                        auditStatusList: this.formatEnums(WithdrawStatus),
-                    })
-                    this.readList();
-                }
-            })
+        // enums()
+        //     .then(response => {
+        //         const {error, data} = response;
+        //         if (error) {
+        //
+        //         } else {
+        //             const {UserStatus, WithdrawStatus} = data;
+        //             this.setState({
+        //                 UserStatusApiText: this.formatEnumsText(UserStatus),
+        //                 WithdrawStatusApiText: this.formatEnumsText(WithdrawStatus),
+        //                 userStatusList: this.formatEnums(UserStatus),
+        //                 auditStatusList: this.formatEnums(WithdrawStatus),
+        //             })
+        //             this.readList();
+        //         }
+        //     })
     }
 
     onChange(e) {

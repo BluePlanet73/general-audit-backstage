@@ -158,12 +158,12 @@ class UserManagementPage extends React.Component {
                 if (error) {
 
                 } else {
-                    const {UserStatus} = data;
-                    this.setState({
-                        UserStatusApiText: this.formatEnumsText(UserStatus),
-                        userStatusList: this.formatEnums(UserStatus),
-                    })
-                    this.readList();
+                    // const {UserStatus} = data;
+                    // this.setState({
+                    //     UserStatusApiText: this.formatEnumsText(UserStatus),
+                    //     userStatusList: this.formatEnums(UserStatus),
+                    // })
+                    // this.readList();
                 }
             })
     }
